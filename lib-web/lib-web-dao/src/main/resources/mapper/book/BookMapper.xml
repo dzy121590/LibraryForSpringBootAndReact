@@ -7,7 +7,7 @@
         <result column="book_name" property="bookName"/>
         <result column="book_class_id" property="bookClassId"/>
         <result column="book_price" property="bookPrice"/>
-        <result column="book_public" property="bookPublish"/>
+        <result column="book_public" property="bookPublic"/>
         <result column="book_author" property="bookAuthor"/>
         <result column="book_img" property="bookImg"/>
         <result column="publish_date" property="publishDate"/>
@@ -25,7 +25,7 @@
     <select id="findListByName" resultMap="BookDTO">
         SELECT
         <include refid="base_column" />
-         FROM book where name like '${bookName}%'
+         FROM book where book_name like '${bookName}%'
         AND valid_flag='ENABLE'
     </select>
 
@@ -37,18 +37,13 @@
     </select>
 
     <insert id="insert">
-        INSERT INTO book(book_name,book_class_id,book_price,book_publish,book_author,book_img,publish_date, valid_flag) values (#{bookName},#{bookClassId},#{bookPrice},#{bookPublish},#{bookAuthor},#{bookImg},#{publishDate},#{validFlag})
+        INSERT INTO book(book_name,book_class_id,book_price,book_public,book_author,book_img,publish_date, valid_flag) values (#{bookName},#{bookClassId},#{bookPrice},#{bookPublic},#{bookAuthor},#{bookImg},#{publishDate},#{validFlag})
     </insert>
 
     <update id="update">
-        UPDATE book set <set>
-        <if test="bookName != null">
-            book_name=#{bookName},
-        </if>
-        <if test="updateDate != null">
-            update_date=#{updateDate},
-        </if>
-    </set> where id=#{id}
+        UPDATE book set
+            book_name=#{bookName}
+    where id=#{id}
     </update>
 
     <delete id="delete">

@@ -8,6 +8,7 @@ import com.dongzhiyuan.lib.api.service.book.BookService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -64,7 +65,7 @@ public class BookController {
      * @param bookDTO 新增实体
      */
     @RequestMapping("/insert")
-    public ResultDTO insert(BookDTO bookDTO) {
+    public ResultDTO insert(@RequestBody BookDTO bookDTO) {
         try {
             return bookService.insert(bookDTO);
         } catch (Exception e) {

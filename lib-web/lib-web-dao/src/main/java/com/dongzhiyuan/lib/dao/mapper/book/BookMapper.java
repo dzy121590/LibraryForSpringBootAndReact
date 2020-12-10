@@ -16,10 +16,10 @@ public interface BookMapper {
 
     /**
      * 根据名称模糊查询全部分类信息
-     * @param name  分类名称
+     * @param bookName  分类名称
      * @return 匹配的数据集
      */
-    List<BookDTO> findListByName(String name);
+    List<BookDTO> findListByName(String bookName);
 
     BookDTO findById(int id);
 

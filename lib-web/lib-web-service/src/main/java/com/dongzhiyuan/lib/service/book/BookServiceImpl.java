@@ -23,12 +23,12 @@ public class BookServiceImpl implements BookService {
     private BookMapper bookMapper;
 
     @Override
-    public ResultDTO findListByName(String name) {
-        logger.info("入参："+name);
-        if (StringUtils.isEmpty(name)){
+    public ResultDTO findListByName(String bookName) {
+        logger.info("入参："+bookName);
+        if (StringUtils.isEmpty(bookName)){
             return new ResultDTO(HttpCode.FAIL.getCode(),"搜索关键字不能为空");
         }
-        List<BookDTO> list=bookMapper.findListByName(name);
+        List<BookDTO> list=bookMapper.findListByName(bookName);
         logger.info("出参：" + list);
         if(CollectionUtils.isEmpty(list)) {
             return new ResultDTO(HttpCode.FAIL.getCode(), "暂无对应分类数据");
@@ -58,6 +58,9 @@ public class BookServiceImpl implements BookService {
         // 非空判断
         if(StringUtils.isEmpty(entity.getBookName())) {
             return new ResultDTO(HttpCode.FAIL.getCode(), "分类名称不能为空");
+        }
+        if(StringUtils.isEmpty(entity.getBookClassId())) {
+            return new ResultDTO(HttpCode.FAIL.getCode(), "书籍分类编号不能为空");
         }
         int influenceNumber = bookMapper.insert(entity);
         if(influenceNumber <= 0) {

@@ -7,6 +7,7 @@
         <result column="book_name" property="bookName"/>
         <result column="book_class_id" property="bookClassId"/>
         <result column="book_price" property="bookPrice"/>
+        <result column="book_count" property="bookCount"/>
         <result column="book_public" property="bookPublic"/>
         <result column="book_author" property="bookAuthor"/>
         <result column="book_img" property="bookImg"/>
@@ -19,7 +20,7 @@
     </resultMap>
 
     <sql id="base_column">
-        id, book_name,book_class_id,book_price,book_public,book_author,book_img,publish_date, tmp1,tmp2,create_date,update_date,valid_flag
+        id, book_name,book_class_id,book_price,book_count,book_public,book_author,book_img,publish_date, tmp1,tmp2,create_date,update_date,valid_flag
     </sql>
 
     <select id="findListByName" resultMap="BookDTO">
@@ -37,7 +38,7 @@
     </select>
 
     <insert id="insert">
-        INSERT INTO book(book_name,book_class_id,book_price,book_public,book_author,book_img,publish_date, valid_flag) values (#{bookName},#{bookClassId},#{bookPrice},#{bookPublic},#{bookAuthor},#{bookImg},#{publishDate},#{validFlag})
+        INSERT INTO book(book_name,book_class_id,book_price,book_count,book_public,book_author,book_img,publish_date, valid_flag) values (#{bookName},#{bookClassId},#{bookPrice},#{bookCount},#{bookPublic},#{bookAuthor},#{bookImg},#{publishDate},#{validFlag})
     </insert>
 
     <update id="update">

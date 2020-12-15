@@ -32,15 +32,11 @@ public class BookDTO extends BaseDTO implements Serializable {
      */
     private BigDecimal bookPrice;
 
-    /**
-     * 书籍数量
-     */
     private int bookCount;
-
     /**
      * 书籍出版社
      */
-    private String bookPublish;
+    private String bookPublic;
 
     /**
      * 书籍作者
